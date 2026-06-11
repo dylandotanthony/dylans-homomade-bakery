@@ -11,7 +11,14 @@ html, body {
     margin: 0 auto !important; 
     padding-top: 2rem; 
 }
-
+.button-paypal { 
+    background-color: #0070BA !important; 
+    color: #ffffff !important; 
+}
+.button-paypal:hover {
+    filter: brightness(1.1);
+    color: #ffffff !important;
+}
 /* Banner Container */
 .banner-container { position: relative; margin-bottom: 60px; border-radius: 16px; }
 .banner-img { width: 100%; height: auto; border-radius: 16px; display: block; }
