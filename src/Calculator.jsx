@@ -356,16 +356,19 @@ export default function Calculator() {
                     <p className="mb-0 small text-muted">Scale and target dough weights perfectly</p>
                 </div>
 
-                {/* The 3 Mix Cards */}
+                {/* The 4 Mix Cards in a 2x2 Grid */}
                 <div className="row g-4">
-                    <div className="col-lg-4 col-12">
+                    <div className="col-md-6 col-12">
                         <MixCard mixName="Mix 1" defaultRecipe="og_loaf" />
                     </div>
-                    <div className="col-lg-4 col-12">
+                    <div className="col-md-6 col-12">
                         <MixCard mixName="Mix 2" defaultRecipe="roasted_chile" />
                     </div>
-                    <div className="col-lg-4 col-12">
+                    <div className="col-md-6 col-12">
                         <MixCard mixName="Mix 3" defaultRecipe="english_muffs" />
+                    </div>
+                    <div className="col-md-6 col-12">
+                        <MixCard mixName="Mix 4" defaultRecipe="focaccia" />
                     </div>
                 </div>
 
