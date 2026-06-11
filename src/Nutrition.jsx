@@ -160,15 +160,15 @@ export default function Nutrition() {
                 <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 mb-4 mx-auto" style={{ maxWidth: '450px' }}>
                     <Link 
                         className="btn shadow-sm w-100 fw-bold text-dark border border-dark" 
-                        style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#52C4FA', borderRadius: '50px' }} 
+                        style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#ffffff', borderRadius: '50px' }} 
                         to="/"
                     >
-                        🏠 Back to Website
+                        🏠 Back Home
                     </Link>
                     
                     <a 
                         className="btn shadow-sm w-100 fw-bold text-dark border border-dark" 
-                        style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#52C4FA', borderRadius: '50px' }} 
+                        style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#ffffff', borderRadius: '50px' }} 
                         href="https://bakesy.shop/b/dylans-homomade-goods" 
                         target="_blank" 
                         rel="noopener noreferrer"
