@@ -165,7 +165,7 @@ export default function Home() {
                   </div>
                   <div className="col-6">
                     <a className="button button-venmo m-0 mb-2" href="https://venmo.com/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon" aria-hidden="true" src={venmoIcon} alt="Venmo Logo" />Venmo</a>
-                    <a className="button button-paypal m-0" href="https://paypal.com/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon" aria-hidden="true" src={paypalIcon} alt="PayPal Logo" />PayPal</a>
+                    <a className="button button-paypal m-0" href="https://www.paypal.me/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon" aria-hidden="true" src={paypalIcon} alt="PayPal Logo" />PayPal</a>
                   </div>
                 </div>
                 <a className="button button-amazon m-0" href="https://www.amazon.com/registries/gl/guest-view/1H8P7FQ2QP6O5?ref_=cm_sw_r_cp_ud_ggr-subnav-share_67DF586JW5W3XPYQJHNV" target="_blank" rel="noopener noreferrer" role="button">
