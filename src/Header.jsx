@@ -24,7 +24,7 @@ export default function Header() {
       {/* Social Media Links */}
       <div className="d-flex justify-content-center flex-wrap gap-3 mb-4 mt-5">
         <a href="https://www.facebook.com/DylansHomoMadeGoods" className="social-circle bg-facebook shadow-sm" target="_blank" rel="noopener noreferrer"><img src={facebookIcon} alt="Facebook" /></a>
-        <a href="https://www.instagram.com/dylanshomomadegood" className="social-circle bg-instagram shadow-sm" target="_blank" rel="noopener noreferrer"><img src={instagramIcon} alt="Instagram" /></a>
+        <a href="https://www.instagram.com/dylanshomomadegoods" className="social-circle bg-instagram shadow-sm" target="_blank" rel="noopener noreferrer"><img src={instagramIcon} alt="Instagram" /></a>
         <a href="https://www.tiktok.com/@dylanshomomadegoods" className="social-circle bg-tiktok shadow-sm" target="_blank" rel="noopener noreferrer"><img src={tiktokIcon} alt="TikTok" /></a>
         <a href="https://www.linkedin.com/company/dylanshomomadegoods" className="social-circle bg-linkedin shadow-sm" target="_blank" rel="noopener noreferrer"><img src={linkedinIcon} alt="LinkedIn" /></a>
         <a href="https://nextdoor.com/page/dylans-homomade-goods-westminster-co/" className="social-circle bg-nextdoor shadow-sm" target="_blank" rel="noopener noreferrer"><img src={nextdoorIcon} alt="Nextdoor" /></a>
