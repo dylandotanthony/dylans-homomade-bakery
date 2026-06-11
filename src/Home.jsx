@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // <--- ADD THIS LINE RIGHT HERE
-import Header from './Header'; // <--- Bring in the Header
-import Footer from './Footer'; // <--- Bring in the Footer
+import { Link } from 'react-router-dom'; 
+import Header from './Header'; 
+import Footer from './Footer'; 
 import ReviewsCarousel from './ReviewsCarousel';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -27,13 +27,15 @@ export default function Home() {
       <div className="column">
         
         {/* Banner Section */}
-        {/* Replace 25 lines of code with this one tag! */}
         <Header />
 
         {/* Bio */}
         <div style={{ marginTop: '20px' }}>
-          <p className="bg-white p-3 rounded-4 shadow-sm mb-3 border border-dark" style={{ color: 'black' }}>
-            Crusty & Baked to Order 🌈🥖 Toaster-ready, small-batch sourdough made with love, pride, & a wild lil’ starter named Crustpell Roan 💅 Get them carbs
+          <p className="bg-white p-3 rounded-4 shadow-sm mb-3 border border-dark" style={{ color: 'black', lineHeight: '1.6' }}>
+            <strong>Crusty & Baked to Order 🌈</strong><br />
+            🥖 Toaster-ready, small-batch sourdough <br />
+            made with love, pride, & a wild lil’ starter named Crustpell Roan <br />
+            💅 Get them carbs
           </p>
         </div>
 
@@ -46,10 +48,21 @@ export default function Home() {
               <div className="card-body text-center d-flex flex-column justify-content-center pb-3">
                 <h3 className="card-title h4 mb-3 mt-2 font-weight-bold">🍞 Fresh HomoMade Sourdough 🥖</h3>
                 <p className="mb-4 text-muted">Order your loaves, bagels, english muffs, and specialty focaccia directly from our shop!</p>
-                <a className="btn btn-cta" href="https://bakesy.shop/b/dylans-homomade-goods" target="_blank" rel="noopener noreferrer">
-                  <img className="icon-logo" aria-hidden="true" src={logoImg} alt="Logo" style={{ marginRight: '12px' }} />Order Here, Get Crusty<img className="icon-logo" aria-hidden="true" src={logoImg} alt="Logo" style={{ marginLeft: '12px' }} />
+                
+                {/* UPDATED BLUE BUTTON */}
+                <a 
+                    className="btn shadow-sm fw-bold text-dark border border-dark w-100" 
+                    style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#52C4FA', borderRadius: '50px', marginBottom: '12px' }} 
+                    href="https://bakesy.shop/b/dylans-homomade-goods" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
+                  <img className="icon-logo" aria-hidden="true" src={logoImg} alt="Logo" style={{ marginRight: '12px' }} />
+                  Order Here, Get Crusty
+                  <img className="icon-logo" aria-hidden="true" src={logoImg} alt="Logo" style={{ marginLeft: '12px' }} />
                 </a>
-<Link className="btn btn-outline-info mt-2" to="/nutrition">Nutritional Information</Link>
+
+                <Link className="btn btn-outline-info mt-2" to="/nutrition">Nutritional Information</Link>
                 <a className="btn btn-outline-info mt-2" href="https://bakesy.shop/b/dylans-homomade-goods/faqs" target="_blank" rel="noopener noreferrer">Frequently Asked Questions</a>
                 
                 {/* Accordion: Care Tips */}
