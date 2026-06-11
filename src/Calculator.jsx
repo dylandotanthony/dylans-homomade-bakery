@@ -261,7 +261,7 @@ function MixCard({ mixName, defaultRecipe }) {
             <div className="card-body text-start">
                 <h2 className="h5 fw-bold text-muted mb-3 text-uppercase">{mixName}</h2>
 
-                {/* Recipe Selection */}
+                {/* Recipe Selection - ALPHABETIZED */}
                 <div className="mb-3">
                     <label className="form-label fw-bold small text-secondary">Select Recipe</label>
                     <select 
@@ -269,9 +269,12 @@ function MixCard({ mixName, defaultRecipe }) {
                         value={recipeKey} 
                         onChange={(e) => setRecipeKey(e.target.value)}
                     >
-                        {Object.entries(recipes).map(([key, data]) => (
-                            <option key={key} value={key}>{data.name}</option>
-                        ))}
+                        {Object.entries(recipes)
+                            .sort(([, a], [, b]) => a.name.localeCompare(b.name)) /* <--- Added alphabetical sort */
+                            .map(([key, data]) => (
+                                <option key={key} value={key}>{data.name}</option>
+                            ))
+                        }
                     </select>
                 </div>
 
