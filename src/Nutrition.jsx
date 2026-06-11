@@ -190,12 +190,9 @@ export default function Nutrition() {
             <main className="container text-start" style={{ maxWidth: '960px' }}>
                 <div className="row g-4 align-items-start">
                     
-                    {/* Left Block Selector - Converted to Signature Blue Theme */}
+                    {/* Left Block Selector - Converted to Crisp White Theme */}
                     <div className="col-12 col-md-6">
-                        <div 
-                            className="card shadow-sm border border-dark p-4 rounded-4 h-100 text-dark" 
-                            style={{ backgroundColor: '#52C4FA' }}
-                        >
+                        <div className="card shadow-sm border border-dark p-4 rounded-4 h-100 bg-white text-dark">
                             <h2 className="h5 fw-bold mb-3 border-bottom border-dark pb-2 text-dark">Select Your Bake</h2>
                             
                             <div className="mb-3">
@@ -204,7 +201,7 @@ export default function Nutrition() {
                                     id="recipe-select" 
                                     value={recipeKey}
                                     onChange={handleRecipeChange}
-                                    className="form-select border border-dark bg-white text-dark fw-semibold shadow-sm rounded-pill p-3 cursor-pointer"
+                                    className="form-select border border-dark bg-light text-dark fw-semibold shadow-sm rounded-pill p-3 cursor-pointer"
                                 >
                                     <option value="" disabled>Select the Crust</option>
                                     <option value="apple_Cin_focaccia">Apple Cinnamon Focaccia</option>
@@ -254,17 +251,17 @@ export default function Nutrition() {
                                     value={servings} 
                                     min="1" 
                                     onChange={(e) => setServings(e.target.value)}
-                                    className="form-control border border-dark bg-white text-dark text-center fs-5 fw-bold rounded-pill p-3"
+                                    className="form-control border border-dark bg-light text-dark text-center fs-5 fw-bold rounded-pill p-3"
                                 />
                             </div>
 
                             <div className="mt-4 pt-3 border-top border-dark">
                                 <h3 className="text-dark fw-bold mb-3 text-uppercase tracking-wider text-center" style={{ fontSize: '12px' }}>Quick Macros</h3>
                                 <div className="row row-cols-2 row-cols-sm-4 g-2">
-                                    <div className="col"><div className="bg-white border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Cals</span><span className="text-dark fw-bold fs-5">{totalCals}</span></div></div>
-                                    <div className="col"><div className="bg-white border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Carbs</span><span className="text-dark fw-bold fs-5">{totalCarbs}</span></div></div>
-                                    <div className="col"><div className="bg-white border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Protein</span><span className="text-dark fw-bold fs-5">{totalPro}</span></div></div>
-                                    <div className="col"><div className="bg-white border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Fat</span><span className="text-dark fw-bold fs-5">{totalFat}</span></div></div>
+                                    <div className="col"><div className="bg-light border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Cals</span><span className="text-dark fw-bold fs-5">{totalCals}</span></div></div>
+                                    <div className="col"><div className="bg-light border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Carbs</span><span className="text-dark fw-bold fs-5">{totalCarbs}</span></div></div>
+                                    <div className="col"><div className="bg-light border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Protein</span><span className="text-dark fw-bold fs-5">{totalPro}</span></div></div>
+                                    <div className="col"><div className="bg-light border border-dark rounded p-2 text-center shadow-sm"><span className="d-block text-dark text-uppercase fw-bold" style={{ fontSize: '10px' }}>Fat</span><span className="text-dark fw-bold fs-5">{totalFat}</span></div></div>
                                 </div>
                             </div>
                         </div>
