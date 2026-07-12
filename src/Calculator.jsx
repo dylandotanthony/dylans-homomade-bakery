@@ -86,8 +86,8 @@ const recipes = {
     },
     "banana_pie": {
         name: "Banana Pie Sourdough",
-        dough: [{ name: "Flour", weight: 398.8 }, { name: "Water", weight: 247.2 }, { name: "Starter", weight: 100 }, { name: "Salt", weight: 12.8 }, { name: "Banana Pudding Mix", weight: 95.7 }],
-        inclusions: [{ name: "Cookies Fold in", weight: 59.8 }, { name: "Cookies Dusters", weight: 0 }]
+        dough: [{ name: "Flour", weight: 407.7 }, { name: "Water", weight: 252.8 }, { name: "Starter", weight: 97.8 }, { name: "Salt", weight: 13 }, { name: "Banana Pudding Mix", weight: 77.5 }],
+        inclusions: [{ name: "Cookies Fold in", weight: 61.2 }, { name: "Cookies Dusters", weight: 0 }]
     },
     "Pep_pizza": {
         name: "Pepperoni Pizza Sourdough",
@@ -187,7 +187,7 @@ const recipes = {
     "Jal_Chile_bagels": {
         name: "Jalapeno Chile Bagels",
         dough: [{ name: "Flour", weight: 67.3 }, { name: "Water", weight: 28.1 }, { name: "Starter", weight: 20.1 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
-        inclusions: [{ name: "Jalapeno", weight: 4.8 }, { name: "Cheese", weight: 5.8 }]
+        inclusions: [{ name: "Peppers", weight: 6.7 }, { name: "Cheese", weight: 4.2 }]
     },
     "BB_bagels": {
         name: "Blueberry Bagels",
