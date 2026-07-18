@@ -390,8 +390,8 @@ function MixCard({ mixName, defaultRecipe }) {
 // Main Calculator Layout
 export default function Calculator() {
     return (
-        <div className="container pb-5 text-center">
-            <div className="column">
+<div className="container-fluid px-xl-5 px-3 pb-5 text-center">            
+    <div className="column">
                 
                 <Header />
 
@@ -402,7 +402,6 @@ export default function Calculator() {
 
                 {/* The 6 Mix Cards in a 3x2 Grid */}
                 <div className="row g-4">
-                    {/* col-lg-4 makes it 3 columns on large screens. col-md-6 keeps it 2 columns on tablets. col-12 makes it 1 column on phones. */}
                     <div className="col-lg-4 col-md-6 col-12">
                         <MixCard mixName="Mix 1" defaultRecipe="og_loaf" />
                     </div>
