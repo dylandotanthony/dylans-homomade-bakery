@@ -44,6 +44,16 @@ const recipes = {
         dough: [{ name: "Flour", weight: 450 }, { name: "Water", weight: 279 }, { name: "Starter", weight: 112.5 }, { name: "Salt", weight: 14.4 }],
         inclusions: [{ name: "Flakey Salt Topping", weight: 0 }, { name: "Caramel Chips", weight: 54 }]
     },
+    "crisp_french_onione": {
+        name: "Crispy French Onion Sourdough",
+        dough: [{ name: "Flour", weight: 420.1 }, { name: "Water", weight: 264.7 }, { name: "Starter", weight: 105 }, { name: "Soup Mix", weight: 23.5 }],
+        inclusions: [{ name: "Fried Onions", weight: 33.6 }, { name: "Gruyere", weight: 63 }]
+    },
+    "Croissourdough": {
+        name: "Croissourdough",
+        dough: [{ name: "Flour", weight: 427.6 }, { name: "Water", weight: 265.1 }, { name: "Starter", weight: 106.9 }, { name: "Salt", weight: 13.7 }],
+        inclusions: [{ name: "Frozen Butter", weight: 96.6 }]
+    },
     "blueberry": {
         name: "Blueberry Sourdough",
         dough: [{ name: "Flour", weight: 450 }, { name: "Water", weight: 279 }, { name: "Starter", weight: 112.5 }, { name: "Salt", weight: 14.4 }],
@@ -86,7 +96,7 @@ const recipes = {
     },
     "banana_pie": {
         name: "Banana Pie Sourdough",
-        dough: [{ name: "Flour", weight: 407.7 }, { name: "Water", weight: 252.8 }, { name: "Starter", weight: 97.8 }, { name: "Salt", weight: 13 }, { name: "Banana Pudding Mix", weight: 77.5 }],
+        dough: [{ name: "Flour", weight: 409.5 }, { name: "Water", weight: 253.9 }, { name: "Starter", weight: 98.3 }, { name: "Salt", weight: 13.1 }, { name: "Banana Pudding Mix", weight: 73.7 }],
         inclusions: [{ name: "Cookies Fold in", weight: 61.2 }, { name: "Cookies Dusters", weight: 0 }]
     },
     "Pep_pizza": {
@@ -98,6 +108,12 @@ const recipes = {
         name: "GingerCrust Sourdough",
         dough: [{ name: "Flour", weight: 415.9 }, { name: "Water", weight: 241.2 }, { name: "Starter", weight: 100 }, { name: "Salt", weight: 13.3 }, { name: "Brown Sugar", weight: 41.6 }, { name: "Molasses", weight: 83.2 }, { name: "Vanilla Extract", weight: 4.2 }, { name: "Ginger", weight: 5.8 }],
         inclusions: [{ name: "PS SUGAR ROLL IN", weight: 20 }]
+    },
+    "prune_prosper": {
+        name: "Prune & Prosper Sourdough",
+        // Fixed: Replaced period with comma and added missing commas between objects
+        dough: [{ name: "Flour", weight: 358.1 }, { name: "WW Flour", weight: 89.5 }, { name: "Apple Juice", weight: 138.7 }, { name: "Water", weight: 147.7 }, { name: "Starter", weight: 111.9 }, { name: "Salt", weight: 14.3 }],
+        inclusions: [{ name: "Dried Prunes", weight: 44.8 }]
     },
     "bb_cin": {
         name: "Blueberry Cinnamon Sourdough",
@@ -184,10 +200,15 @@ const recipes = {
         dough: [{ name: "Flour", weight: 40.4 }, { name: "Milk", weight: 22.2 }, { name: "Starter", weight: 8.9 }, { name: "Butter Melted", weight: 5.3 }, { name: "Brown Sugar", weight: 2.2 }, { name: "Salt", weight: 0.9 }],
         inclusions: []
     },
-    "Jal_Chile_bagels": {
-        name: "Jalapeno Chile Bagels",
-        dough: [{ name: "Flour", weight: 67.3 }, { name: "Water", weight: 28.1 }, { name: "Starter", weight: 20.1 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
-        inclusions: [{ name: "Peppers", weight: 6.7 }, { name: "Cheese", weight: 4.2 }]
+    "Jal_Chd_bagels": {
+        name: "Jalapeno Chd Bagels",
+        dough: [{ name: "Flour", weight: 67.5 }, { name: "Water", weight: 18.8 }, { name: "Starter", weight: 20.2 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
+        inclusions: [{ name: "Jalapeno", weight: 6.7 }, { name: "Cheese", weight: 3.6 }]
+    },
+    "RCC_bagels": {
+        name: "Roasted Chile Cheese Bagels",
+        dough: [{ name: "Flour", weight: 67.5 }, { name: "Water", weight: 28.2 }, { name: "Chile Juice", weight: 9.4 }, { name: "Starter", weight: 20.2 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
+        inclusions: [{ name: "Jalapeno", weight: 6.7 }, { name: "Cheese", weight: 3.6 }]
     },
     "BB_bagels": {
         name: "Blueberry Bagels",
@@ -200,6 +221,11 @@ const recipes = {
         inclusions: [{ name: "Dried Blueberries", weight: 59.8 }, { name: "Pepper Jack Cheese", weight: 91.7 }]
     }
 };
+
+// Performance Fix: Sort the recipes ONCE outside the component
+const sortedRecipeEntries = Object.entries(recipes).sort(([, a], [, b]) => 
+    a.name.localeCompare(b.name)
+);
 
 // Reusable Mix Card Component
 function MixCard({ mixName, defaultRecipe }) {
@@ -223,18 +249,36 @@ function MixCard({ mixName, defaultRecipe }) {
     }, [recipeKey, baseWeight]);
 
     const handleMultiplierChange = (e) => {
-        const val = parseFloat(e.target.value);
-        setMultiplier(val || "");
-        if (val) {
+        const rawVal = e.target.value;
+        
+        if (rawVal === "") {
+            setMultiplier("");
+            setTargetWeight("");
+            return;
+        }
+
+        setMultiplier(rawVal);
+        
+        const val = parseFloat(rawVal);
+        if (!isNaN(val) && val >= 0) {
             setTargetWeight(Math.round(baseWeight * val));
             setMode("Multiplier");
         }
     };
 
     const handleTargetChange = (e) => {
-        const val = parseFloat(e.target.value);
-        setTargetWeight(val || "");
-        if (val) {
+        const rawVal = e.target.value;
+        
+        if (rawVal === "") {
+            setTargetWeight("");
+            setMultiplier("");
+            return;
+        }
+
+        setTargetWeight(rawVal);
+
+        const val = parseFloat(rawVal);
+        if (!isNaN(val) && val >= 0 && baseWeight > 0) {
             setMultiplier(+(val / baseWeight).toFixed(2));
             setMode("Target Weight");
         }
@@ -269,12 +313,9 @@ function MixCard({ mixName, defaultRecipe }) {
                         value={recipeKey} 
                         onChange={(e) => setRecipeKey(e.target.value)}
                     >
-                        {Object.entries(recipes)
-                            .sort(([, a], [, b]) => a.name.localeCompare(b.name)) /* <--- Added alphabetical sort */
-                            .map(([key, data]) => (
-                                <option key={key} value={key}>{data.name}</option>
-                            ))
-                        }
+                        {sortedRecipeEntries.map(([key, data]) => (
+                            <option key={key} value={key}>{data.name}</option>
+                        ))}
                     </select>
                 </div>
 
@@ -285,7 +326,7 @@ function MixCard({ mixName, defaultRecipe }) {
                         <input 
                             type="number" 
                             className="form-control" 
-                            step="0.1" min="0.1" 
+                            step="0.1" min="0" 
                             value={multiplier} 
                             onChange={handleMultiplierChange} 
                         />
@@ -295,7 +336,7 @@ function MixCard({ mixName, defaultRecipe }) {
                         <input 
                             type="number" 
                             className="form-control" 
-                            step="10" min="1" 
+                            step="10" min="0" 
                             value={targetWeight} 
                             onChange={handleTargetChange} 
                         />
@@ -359,19 +400,26 @@ export default function Calculator() {
                     <p className="mb-0 small text-muted">Scale and target dough weights perfectly</p>
                 </div>
 
-                {/* The 4 Mix Cards in a 2x2 Grid */}
+                {/* The 6 Mix Cards in a 3x2 Grid */}
                 <div className="row g-4">
-                    <div className="col-md-6 col-12">
+                    {/* col-lg-4 makes it 3 columns on large screens. col-md-6 keeps it 2 columns on tablets. col-12 makes it 1 column on phones. */}
+                    <div className="col-lg-4 col-md-6 col-12">
                         <MixCard mixName="Mix 1" defaultRecipe="og_loaf" />
                     </div>
-                    <div className="col-md-6 col-12">
+                    <div className="col-lg-4 col-md-6 col-12">
                         <MixCard mixName="Mix 2" defaultRecipe="roasted_chile" />
                     </div>
-                    <div className="col-md-6 col-12">
+                    <div className="col-lg-4 col-md-6 col-12">
                         <MixCard mixName="Mix 3" defaultRecipe="english_muffs" />
                     </div>
-                    <div className="col-md-6 col-12">
+                    <div className="col-lg-4 col-md-6 col-12">
                         <MixCard mixName="Mix 4" defaultRecipe="focaccia" />
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-12">
+                        <MixCard mixName="Mix 5" defaultRecipe="blueberry" />
+                    </div>
+                    <div className="col-lg-4 col-md-6 col-12">
+                        <MixCard mixName="Mix 6" defaultRecipe="og_bagels" />
                     </div>
                 </div>
 
