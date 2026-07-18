@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import Header from './Header'; 
 import Footer from './Footer'; 
-import ReviewsCarousel from './ReviewsCarousel';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // Import all images directly from src/assets/
@@ -30,8 +29,8 @@ export default function Home() {
         <Header />
 
         {/* Bio */}
-        <div style={{ marginTop: '20px' }}>
-          <p className="bg-white p-3 rounded-4 shadow-sm mb-3 border border-dark" style={{ color: 'black', lineHeight: '1.6' }}>
+        <div className="mt-4">
+          <p className="bg-white p-3 rounded-4 shadow-sm mb-3 border border-dark text-dark" style={{ lineHeight: '1.6' }}>
             <strong>Crusty & Baked to Order 🌈</strong><br />
             🥖 Toaster-ready, small-batch sourdough <br />
             made with love, pride, & a wild lil’ starter named Crustpell Roan <br />
@@ -51,31 +50,31 @@ export default function Home() {
                 
                 {/* UPDATED BLUE BUTTON */}
                 <a 
-                    className="btn shadow-sm fw-bold text-dark border border-dark w-100" 
-                    style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#52C4FA', borderRadius: '50px', marginBottom: '12px' }} 
-                    href="https://bakesy.shop/b/dylans-homomade-goods" 
+                    className="btn shadow-sm fw-bold text-dark border border-dark w-100 mb-3" 
+                    style={{ fontSize: '1.1rem', padding: '12px 24px', backgroundColor: '#52C4FA', borderRadius: '50px' }} 
+                    href="https://www.dylanshomomadegoods.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
                 >
-                  <img className="icon-logo" aria-hidden="true" src={logoImg} alt="Logo" style={{ marginRight: '12px' }} />
+                  <img className="icon-logo me-2" aria-hidden="true" src={logoImg} alt="Logo" />
                   Order Here, Get Crusty
-                  <img className="icon-logo" aria-hidden="true" src={logoImg} alt="Logo" style={{ marginLeft: '12px' }} />
+                  <img className="icon-logo ms-2" aria-hidden="true" src={logoImg} alt="Logo" />
                 </a>
 
                 <Link className="btn btn-outline-info mt-2" to="/nutrition">Nutritional Information</Link>
                 <a className="btn btn-outline-info mt-2" href="https://bakesy.shop/b/dylans-homomade-goods/faqs" target="_blank" rel="noopener noreferrer">Frequently Asked Questions</a>
                 
                 {/* Accordion: Care Tips */}
-                <div className="accordion mt-2 w-100" id="breadCareAccordion">
-                  <div className="accordion-item" style={{ border: 'none', background: 'transparent' }}>
+                <div className="accordion mt-3 w-100" id="breadCareAccordion">
+                  <div className="accordion-item border-0 bg-transparent">
                     <h2 className="accordion-header">
                       <button className="accordion-button collapsed shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBreadCare">
-                        <span style={{ flex: 1, textAlign: 'center' }}>💡 Sourdough Care Tips 🥖</span>
+                        <span className="w-100 text-center">💡 Sourdough Care Tips 🥖</span>
                       </button>
                     </h2>
                     <div id="collapseBreadCare" className="accordion-collapse collapse" data-bs-parent="#breadCareAccordion">
-                      <div className="accordion-body text-start mt-2 border border-dark" style={{ backgroundColor: '#f8f9fa', borderRadius: '20px', fontSize: '0.95rem', padding: '20px', color: 'black' }}>
-                        <p className="mb-1 fw-bold text-center" style={{ fontSize: '1.1rem' }}>🥖 Bread Care ❤️</p>
+                      <div className="accordion-body text-start mt-2 border border-dark text-dark" style={{ backgroundColor: '#f8f9fa', borderRadius: '20px', fontSize: '0.95rem', padding: '20px' }}>
+                        <p className="mb-1 fw-bold text-center fs-5">🥖 Bread Care ❤️</p>
                         <p style={{ lineHeight: '1.6' }}>
                           <strong>🥯 Bagels & English Muffs:</strong> Keep in bread bag 1 day, then move to a loosely closed plastic bag.<br />
                           <strong>🍞 Loaves:</strong> Store 1–2 days. Once cut, transfer to a plastic bag. Stays fresh 4–5 days at room temp.<br />
@@ -97,7 +96,13 @@ export default function Home() {
             <div className="card shadow-sm border-0">
               <div className="card-body text-center">
                 <h3 className="card-title h5 mb-3 font-weight-bold">🍞📅 Sourdough Schedule 📅🥖</h3>
-                <iframe src="https://calendar.google.com/calendar/embed?src=fa6f05beb1b59977c7330102413a07ac92ddea53dae7249e82ed1dfbd6bd161e%40group.calendar.google.com&ctz=America%2FDenver&mode=AGENDA" style={{ border: 0, width: '100%', height: '400px', borderRadius: '8px' }} scrolling="no"></iframe>
+                <iframe 
+                  title="Sourdough Baking Schedule"
+                  src="https://calendar.google.com/calendar/embed?src=fa6f05beb1b59977c7330102413a07ac92ddea53dae7249e82ed1dfbd6bd161e%40group.calendar.google.com&ctz=America%2FDenver&mode=AGENDA" 
+                  style={{ border: 0, width: '100%', height: '400px', borderRadius: '8px' }} 
+                  scrolling="no"
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -107,12 +112,22 @@ export default function Home() {
             <div className="card shadow-sm border-0">
               <div className="card-body text-center">
                 <h3 className="card-title h5 mb-3 font-weight-bold d-flex align-items-center justify-content-center">
-                  <img src={facebookLogoSvg} alt="Facebook Logo" style={{ width: '20px', height: '20px', marginRight: '10px' }} />
+                  <img src={facebookLogoSvg} alt="Facebook Logo" style={{ width: '20px', height: '20px' }} className="me-2" />
                   The Latest on DHG
-                  <img src={facebookLogoSvg} alt="Facebook Logo" style={{ width: '20px', height: '20px', marginLeft: '10px' }} />
+                  <img src={facebookLogoSvg} alt="Facebook Logo" style={{ width: '20px', height: '20px' }} className="ms-2" />
                 </h3>
                 <div className="d-flex justify-content-center w-100">
-                  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDylansHomoMadeGoods&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="500" height="500" style={{ border: 'none', overflow: 'hidden', display: 'block' }} scrolling="no" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                  <iframe 
+                    title="Dylan's HomoMade Goods Facebook Feed"
+                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDylansHomoMadeGoods&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
+                    width="500" 
+                    height="500" 
+                    style={{ border: 'none', overflow: 'hidden', display: 'block' }} 
+                    scrolling="no" 
+                    allowFullScreen={true} 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    loading="lazy"
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -134,34 +149,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Card 5: Combined Reviews Section & Links */}
-          <div className="col-12">
-            <div className="card shadow-sm border-0">
-              <div className="card-body text-center pb-3">
-                <h3 className="card-title h5 mb-3 font-weight-bold">📝 Reviews & Updates 💌</h3>
-                
-                {/* Dynamically Injecting our Custom Review Carousel Component */}
-                <ReviewsCarousel />
-
-                {/* Static Links */}
-                <div className="row g-2">
-                  <div className="col-6"><a className="btn btn-outline-info m-0" href="https://bakesy.shop/b/dylans-homomade-goods/reviews" target="_blank" rel="noopener noreferrer"> Bakesy Reviews</a></div>
-                  <div className="col-6"><a className="btn btn-outline-info m-0" href="https://g.page/r/CRrDIEmyyP6HEAE/review" target="_blank" rel="noopener noreferrer">Google Reviews</a></div>
-                  <div className="col-6"><a className="btn btn-outline-info m-0" href="https://voyagedenver.com/interview/check-out-dylan-daughenbaughs-story" target="_blank" rel="noopener noreferrer">Dylan's Story</a></div>
-                  <div className="col-6"><a className="btn btn-outline-info m-0" href="https://subscribepage.io/JWJH7P" target="_blank" rel="noopener noreferrer">Subscribe</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 6: Support / Donations */}
+          {/* Card 5: Support / Donations */}
           <div className="col-12">
             <div className="card shadow-sm border-0">
               <div className="card-body text-center pb-3">
                 <h3 className="card-title h5 mb-3 mt-2 font-weight-bold">🎁 Support the Bakery 💸 </h3>
                 <div className="row align-items-center mb-3">
                   <div className="col-6">
-                    <img src={venmoQr} alt="Venmo QR Code" className="img-fluid border border-dark rounded-3" />
+                    <img src={venmoQr} alt="Venmo QR Code" className="img-fluid border border-dark rounded-3" loading="lazy" />
                   </div>
                   <div className="col-6">
                     <a className="button button-venmo m-0 mb-2" href="https://venmo.com/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon" aria-hidden="true" src={venmoIcon} alt="Venmo Logo" />Venmo</a>
