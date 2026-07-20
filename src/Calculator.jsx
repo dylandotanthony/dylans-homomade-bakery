@@ -201,14 +201,14 @@ const recipes = {
         inclusions: []
     },
     "Jal_Chd_bagels": {
-        name: "Jalapeno Chd Bagels",
-        dough: [{ name: "Flour", weight: 67.5 }, { name: "Water", weight: 18.8 }, { name: "Starter", weight: 20.2 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
+        name: "Jalapeno Cheddar Bagels",
+        dough: [{ name: "Flour", weight: 67.5 }, { name: "Water", weight: 28.2 }, { name: "Starter", weight: 20.2 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
         inclusions: [{ name: "Jalapeno", weight: 6.7 }, { name: "Cheese", weight: 3.6 }]
     },
     "RCC_bagels": {
         name: "Roasted Chile Cheese Bagels",
-        dough: [{ name: "Flour", weight: 67.5 }, { name: "Water", weight: 28.2 }, { name: "Chile Juice", weight: 9.4 }, { name: "Starter", weight: 20.2 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
-        inclusions: [{ name: "Jalapeno", weight: 6.7 }, { name: "Cheese", weight: 3.6 }]
+        dough: [{ name: "Flour", weight: 67.5 }, { name: "Water", weight: 24 }, { name: "Chile Juice", weight: 4.2 }, { name: "Starter", weight: 20.2 }, { name: "Blue Agave", weight: 3.3 }, { name: "Brown Sugar", weight: 3.3 }, { name: "Salt", weight: 2.1 }],
+        inclusions: [{ name: "Chile", weight: 6.7 }, { name: "Cheese Mix", weight: 3.6 }]
     },
     "BB_bagels": {
         name: "Blueberry Bagels",
