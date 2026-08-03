@@ -197,8 +197,13 @@ const recipes = {
     },
     "rollies": {
         name: "Sourdough Rollies",
-        dough: [{ name: "Flour", weight: 40.4 }, { name: "Milk", weight: 22.2 }, { name: "Starter", weight: 8.9 }, { name: "Butter Melted", weight: 5.3 }, { name: "Brown Sugar", weight: 2.2 }, { name: "Salt", weight: 0.9 }],
+        dough: [{ name: "Flour", weight: 40.4 }, { name: "Milk", weight: 22.2 }, { name: "Starter", weight: 8.9 }, { name: "Butter Melted", weight: 5.3 }, { name: "Brown Sugar", weight: 2.2 }, { name: "Salt", weight: 1.52 }],
         inclusions: []
+    },
+    "Hamburger_Buns": {
+        name: "Hamburger Buns",
+        dough: [{ name: "Flour", weight: 57.1 }, { name: "Water", weight: 12.69 }, { name: "Milk", weight: 19.04 }, { name: "Starter", weight: 14.60 }, { name: "Softened Butter", weight: 6.83 }, { name: "Brown Sugar", weight: 3.17 }, { name: "Salt", weight: 0.9 }],
+        inclusions: [{ name: "Egg Wash Topping", weight: 0 }, { name: "Melted Butter Topping", weight: 0 }]
     },
     "Jal_Chd_bagels": {
         name: "Jalapeno Cheddar Bagels",
