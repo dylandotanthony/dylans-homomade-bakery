@@ -111,7 +111,6 @@ const recipes = {
     },
     "prune_prosper": {
         name: "Prune & Prosper Sourdough",
-        // Fixed: Replaced period with comma and added missing commas between objects
         dough: [{ name: "Flour", weight: 358.1 }, { name: "WW Flour", weight: 89.5 }, { name: "Apple Juice", weight: 138.7 }, { name: "Water", weight: 147.7 }, { name: "Starter", weight: 111.9 }, { name: "Salt", weight: 14.3 }],
         inclusions: [{ name: "Dried Prunes", weight: 44.8 }]
     },
@@ -358,8 +357,8 @@ function MixCard({ mixName, defaultRecipe }) {
                         {recipe.dough && recipe.dough.length > 0 && (
                             <>
                                 <li className="fw-bold text-muted small text-uppercase mt-2 mb-1 border-bottom pb-1">Base Dough</li>
-                                {sortDough(recipe.dough).map((item, idx) => (
-                                    <li key={idx} className="d-flex justify-content-between py-1 border-bottom border-white">
+                                {sortDough(recipe.dough).map((item) => (
+                                    <li key={item.name} className="d-flex justify-content-between py-1 border-bottom border-white">
                                         <span>{item.name}</span>
                                         <span className="fw-bold text-dark">{Math.round(item.weight * currentMultiplier)}g</span>
                                     </li>
@@ -370,8 +369,8 @@ function MixCard({ mixName, defaultRecipe }) {
                         {recipe.inclusions && recipe.inclusions.length > 0 && (
                             <>
                                 <li className="fw-bold text-muted small text-uppercase mt-3 mb-1 border-bottom pb-1">Inclusions / Extras</li>
-                                {recipe.inclusions.map((item, idx) => (
-                                    <li key={idx} className="d-flex justify-content-between py-1 border-bottom border-white">
+                                {recipe.inclusions.map((item) => (
+                                    <li key={item.name} className="d-flex justify-content-between py-1 border-bottom border-white">
                                         <span>{item.name}</span>
                                         <span className="fw-bold text-dark">{Math.round(item.weight * currentMultiplier)}g</span>
                                     </li>
@@ -395,8 +394,8 @@ function MixCard({ mixName, defaultRecipe }) {
 // Main Calculator Layout
 export default function Calculator() {
     return (
-<div className="container-fluid px-xl-5 px-3 pb-5 text-center">            
-    <div className="column">
+        <div className="container-fluid px-xl-5 px-3 pb-5 text-center">            
+            <div className="column">
                 
                 <Header />
 
