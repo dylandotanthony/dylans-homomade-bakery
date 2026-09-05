@@ -407,7 +407,7 @@ export default function Calculator() {
         <div className="container-fluid px-xl-5 px-3 pb-5 text-center">            
             <div className="column">
                 
-                <Header />
+                
 
                 <div className="bg-white p-3 rounded-4 shadow-sm mb-4 border border-dark text-dark mt-3">
                     <h1 className="h3 fw-bold mb-0">🍞 DHG Baker's Calculator 🍞</h1>
