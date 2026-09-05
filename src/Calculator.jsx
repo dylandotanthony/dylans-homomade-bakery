@@ -134,19 +134,24 @@ const recipes = {
         dough: [],
         inclusions: [{ name: "Butter", weight: 39.3 }, { name: "Cinnamon", weight: 5.1 }, { name: "Brown Sugar", weight: 44.9 }, { name: "Flour", weight: 10.7 }]
     },
-    "PS_butter": {
-        name: "Pumpkin Spice Butter",
-        dough: [],
-        inclusions: [{ name: "Butter", weight: 39.3 }, { name: "Pumpkin Spice", weight: 5.1 }, { name: "Brown Sugar", weight: 44.9 }, { name: "Flour", weight: 10.7 }]
-    },
     "pumpkin": {
         name: "Pumpkin Sourdough",
-        dough: [{ name: "Flour", weight: 431.1 }, { name: "Water", weight: 189.6 }, { name: "Pumpkin Puree", weight: 172.6 }, { name: "Starter", weight: 86 }, { name: "Salt", weight: 8.8 }, { name: "Blue Agave", weight: 17 }],
+        dough: [{ name: "Flour", weight: 449.9 }, { name: "Water", weight: 140.9 }, { name: "Pumpkin Puree", weight: 177.5 }, { name: "Starter", weight: 104.4 }, { name: "Salt", weight: 14.6 }, { name: "Maple Syrup", weight: 17.7 }],
         inclusions: []
+    },
+    "autumn_swirl": {
+        name: "Autumn Swirl Sourdough",
+        dough: [{ name: "Flour", weight: 422.5 }, { name: "Water", weight: 132.4 }, { name: "Pumpkin Puree", weight: 166.7 }, { name: "Starter", weight: 98 }, { name: "Salt", weight: 13.7 }, { name: "Maple Syrup", weight: 16.7 }],
+        inclusions: [{ name: "CIN BUTTER", weight: 1 }]
     },
     "english_muffs": {
         name: "OG English Muffs",
         dough: [{ name: "Flour", weight: 60.7 }, { name: "Milk", weight: 33.5 }, { name: "Starter", weight: 16 }, { name: "Salt", weight: 1.6 }, { name: "Blue Agave", weight: 3.2 }],
+        inclusions: [{ name: "Cornmeal Dusting", weight: 0 }]
+    },
+    "Punkin_muffs": {
+        name: "Punkin English Muffs",
+        dough: [{ name: "Flour", weight: 58.7 }, { name: "Milk", weight: 17.5 }, { name: "Pumpkin Puree", weight: 18.1 }, { name: "Starter", weight: 16 }, { name: "Salt", weight: 1.6 }, { name: "Maple Syrup", weight: 3.6 }],
         inclusions: [{ name: "Cornmeal Dusting", weight: 0 }]
     },
     "JC_E_muffs": {
