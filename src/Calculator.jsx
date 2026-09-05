@@ -44,7 +44,7 @@ const recipes = {
         dough: [{ name: "Flour", weight: 450 }, { name: "Water", weight: 279 }, { name: "Starter", weight: 112.5 }, { name: "Salt", weight: 14.4 }],
         inclusions: [{ name: "Flakey Salt Topping", weight: 0 }, { name: "Caramel Chips", weight: 54 }]
     },
-    "crisp_french_onione": {
+    "crisp_french_onion": {
         name: "Crispy French Onion Sourdough",
         dough: [{ name: "Flour", weight: 420.1 }, { name: "Water", weight: 264.7 }, { name: "Starter", weight: 105 }, { name: "Soup Mix", weight: 23.5 }],
         inclusions: [{ name: "Fried Onions", weight: 33.6 }, { name: "Gruyere", weight: 63 }]
@@ -288,7 +288,8 @@ function MixCard({ mixName, defaultRecipe }) {
 
         const val = parseFloat(rawVal);
         if (!isNaN(val) && val >= 0 && baseWeight > 0) {
-            setMultiplier(+(val / baseWeight).toFixed(2));
+            // Updated to 4 decimal places for precision rounding
+            setMultiplier(+(val / baseWeight).toFixed(4));
             setMode("Target Weight");
         }
     };
@@ -309,15 +310,19 @@ function MixCard({ mixName, defaultRecipe }) {
     const currentMultiplier = parseFloat(multiplier) || 0;
     const totalYield = Math.round(baseWeight * currentMultiplier);
 
+    // Generate unique ID for accessibility mapping
+    const selectId = `recipe-select-${mixName.replace(/\s+/g, '-').toLowerCase()}`;
+
     return (
         <div className="card shadow-sm border-0 mb-4">
             <div className="card-body text-start">
                 <h2 className="h5 fw-bold text-muted mb-3 text-uppercase">{mixName}</h2>
 
-                {/* Recipe Selection - ALPHABETIZED */}
+                {/* Recipe Selection - ALPHABETIZED & ACCESSIBLE */}
                 <div className="mb-3">
-                    <label className="form-label fw-bold small text-secondary">Select Recipe</label>
+                    <label htmlFor={selectId} className="form-label fw-bold small text-secondary">Select Recipe</label>
                     <select 
+                        id={selectId}
                         className="form-select bg-light fw-bold" 
                         value={recipeKey} 
                         onChange={(e) => setRecipeKey(e.target.value)}
