@@ -177,7 +177,7 @@ const recipes = {
     "CA_focaccia": {
         name: "Caramel Apple Focaccia", type: "batch",
         dough: [{ name: "Flour", weight: 226 }, { name: "Water", weight: 70.1 }, { name: "Apple Juice", weight: 70.1 }, { name: "Salt", weight: 7.2 }, { name: "Starter", weight: 54.2 }, { name: "Blue Agave", weight: 11.3 }, { name: "Avocado Oil", weight: 9 }],
-        inclusions: [{ name: "Caramel Chips", weight: 13.6 }, { name: "Dried Apple", weight: 13.6 }]
+        inclusions: [{ name: "Caramel Chips", weight: 13.6 }, { name: "Dried Apples", weight: 13.6 }]
     },
     "tortilla": {
         name: "Sourdough Tortillas", type: "unit",
@@ -266,24 +266,28 @@ const ingredientMacros = {
     "Garlic": { calories: 1.49, fat: 0.01, sodium: 0.17, carbs: 0.33, sugar: 0.01, protein: 0.06 },
     "Dried Cherry": { calories: 3.5, fat: 0, sodium: 0, carbs: 0.82, sugar: 0.68, protein: 0.03 },
     
-    // NEW INGREDIENTS ADDED - Defaulted to 0 to prevent app crashes (Update values later as needed)
-    "CIN BUTTER": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Fried Onions": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Gruyere": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Soup Mix": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Frozen Butter": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Cookies Dusters": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Pepperoni": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Mozz Chz": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "PS SUGAR ROLL IN": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "WW Flour": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Dried Prunes": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Butter": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Cinnamon": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Pumpkin Spice": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Cinnamon Sugar": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Cheese": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 },
-    "Chile Juice": { calories: 0, fat: 0, sodium: 0, carbs: 0, sugar: 0, protein: 0 }
+    // NEW INGREDIENTS ADDED - Updated with per-gram macro values
+    "CIN BUTTER": { calories: 5.5, fat: 0.5, sodium: 3.2, carbs: 0.3, sugar: 0.25, protein: 0.01 }, 
+    "Fried Onions": { calories: 6.0, fat: 0.45, sodium: 7.5, carbs: 0.45, sugar: 0.05, protein: 0.05 },
+    "Gruyere": { calories: 4.13, fat: 0.32, sodium: 3.32, carbs: 0.01, sugar: 0.01, protein: 0.30 },
+    "Soup Mix": { calories: 2.9, fat: 0, sodium: 105.0, carbs: 0.6, sugar: 0.1, protein: 0.08 }, 
+    "Frozen Butter": { calories: 7.17, fat: 0.81, sodium: 6.43, carbs: 0.01, sugar: 0.01, protein: 0.01 },
+    "Cookies Dusters": { calories: 4.5, fat: 0.15, sodium: 3.0, carbs: 0.75, sugar: 0.35, protein: 0.05 },
+    "Pepperoni": { calories: 4.94, fat: 0.46, sodium: 15.8, carbs: 0.01, sugar: 0, protein: 0.19 },
+    "Mozz Chz": { calories: 3.0, fat: 0.22, sodium: 6.3, carbs: 0.02, sugar: 0.01, protein: 0.24 },
+    "PS SUGAR ROLL IN": { calories: 3.8, fat: 0, sodium: 0, carbs: 0.99, sugar: 0.97, protein: 0 },
+    "WW Flour": { calories: 3.4, fat: 0.02, sodium: 0.02, carbs: 0.73, sugar: 0, protein: 0.14 },
+    "Dried Prunes": { calories: 2.4, fat: 0, sodium: 0.02, carbs: 0.64, sugar: 0.38, protein: 0.02 },
+    "Butter": { calories: 7.17, fat: 0.81, sodium: 6.43, carbs: 0.01, sugar: 0.01, protein: 0.01 },
+    "Cinnamon": { calories: 2.47, fat: 0.01, sodium: 0.1, carbs: 0.81, sugar: 0.02, protein: 0.04 },
+    "Pumpkin Spice": { calories: 2.5, fat: 0.01, sodium: 0.1, carbs: 0.8, sugar: 0.02, protein: 0.04 },
+    "Cinnamon Sugar": { calories: 3.8, fat: 0, sodium: 0, carbs: 0.99, sugar: 0.97, protein: 0 },
+    "Cheese": { calories: 4.0, fat: 0.33, sodium: 6.0, carbs: 0.01, sugar: 0.01, protein: 0.25 },
+    "Chile Juice": { calories: 0.2, fat: 0, sodium: 0.1, carbs: 0.04, sugar: 0.02, protein: 0 },
+    
+    // MISSING INGREDIENTS ADDED
+    "Molasses": { calories: 2.9, fat: 0, sodium: 0.37, carbs: 0.75, sugar: 0.75, protein: 0 },
+    "Asiago Cheese": { calories: 3.92, fat: 0.30, sodium: 12.0, carbs: 0.03, sugar: 0, protein: 0.25 }
 };
 
 export default function Nutrition() {
