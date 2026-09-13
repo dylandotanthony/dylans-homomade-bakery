@@ -1,6 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import SourdoughStarterCalculator from './SourdoughStarterCalculator';
+
+export default function App() {
+  return (
+    <div className="app-container container my-4">
+      <Header />
+      
+      <div className="text-center my-5">
+        <h1 className="mb-4">Starter Calculator</h1>
+        {/* The calculator is rendered right here */}
+        <SourdoughStarterCalculator />
+      </div>
+
+      <hr className="my-5" />
+      
+      {/* Example of rendering your MixCards below the calculator */}
+      <h2 className="text-center mb-4">Recipe Calculator</h2>
+      <div className="row justify-content-center">
+        <div className="col-md-8 col-lg-6">
+          <MixCard mixName="Main Dough Batch" defaultRecipe="og_loaf" />
+        </div>
+      </div>
+      
+      <Footer />
+    </div>
+  );
+}
 
 // Your Master Recipe Database
 const recipes = {
@@ -288,7 +315,6 @@ function MixCard({ mixName, defaultRecipe }) {
 
         const val = parseFloat(rawVal);
         if (!isNaN(val) && val >= 0 && baseWeight > 0) {
-            // Updated to 4 decimal places for precision rounding
             setMultiplier(+(val / baseWeight).toFixed(4));
             setMode("Target Weight");
         }
@@ -314,7 +340,7 @@ function MixCard({ mixName, defaultRecipe }) {
     const selectId = `recipe-select-${mixName.replace(/\s+/g, '-').toLowerCase()}`;
 
     return (
-        <div className="card shadow-sm border-0 mb-4">
+        <div className="card shadow-sm border-0 mb-4 p-3" style={{ borderRadius: '12px', backgroundColor: '#fff', border: '1px solid #eaeaea' }}>
             <div className="card-body text-start">
                 <h2 className="h5 fw-bold text-muted mb-3 text-uppercase">{mixName}</h2>
 
@@ -323,7 +349,7 @@ function MixCard({ mixName, defaultRecipe }) {
                     <label htmlFor={selectId} className="form-label fw-bold small text-secondary">Select Recipe</label>
                     <select 
                         id={selectId}
-                        className="form-select bg-light fw-bold" 
+                        className="form-select bg-light fw-bold p-2 w-100 border rounded" 
                         value={recipeKey} 
                         onChange={(e) => setRecipeKey(e.target.value)}
                     >
@@ -333,110 +359,51 @@ function MixCard({ mixName, defaultRecipe }) {
                     </select>
                 </div>
 
-                {/* Multiplier and Target Weight Row */}
-                <div className="row g-3 mb-4">
-                    <div className="col-6">
-                        <label className="form-label fw-bold small text-secondary">Multiplier</label>
-                        <input 
-                            type="number" 
-                            className="form-control" 
-                            step="0.1" min="0" 
-                            value={multiplier} 
-                            onChange={handleMultiplierChange} 
-                        />
+                {/* Input Fields */}
+                <div className="d-flex gap-3 mb-4 mt-3">
+                    <div className="flex-grow-1">
+                        <label className="form-label fw-bold small text-secondary d-block mb-1">Multiplier</label>
+                        <input type="number" step="0.1" className="form-control p-2 w-100 border rounded" value={multiplier} onChange={handleMultiplierChange} />
                     </div>
-                    <div className="col-6">
-                        <label className="form-label fw-bold small text-secondary">Target (g)</label>
-                        <input 
-                            type="number" 
-                            className="form-control" 
-                            step="10" min="0" 
-                            value={targetWeight} 
-                            onChange={handleTargetChange} 
-                        />
+                    <div className="flex-grow-1">
+                        <label className="form-label fw-bold small text-secondary d-block mb-1">Target Weight (g)</label>
+                        <input type="number" className="form-control p-2 w-100 border rounded" value={targetWeight} onChange={handleTargetChange} />
                     </div>
                 </div>
 
-                {/* Ingredients Output Area */}
-                <div className="bg-light p-3 rounded-4 border">
-                    <div className="border-bottom pb-2 mb-2 text-muted small fw-bold text-uppercase">
-                        Mode: {mode}
-                    </div>
+                <hr />
 
-                    <ul className="list-unstyled mb-0">
-                        {recipe.dough && recipe.dough.length > 0 && (
-                            <>
-                                <li className="fw-bold text-muted small text-uppercase mt-2 mb-1 border-bottom pb-1">Base Dough</li>
-                                {sortDough(recipe.dough).map((item) => (
-                                    <li key={item.name} className="d-flex justify-content-between py-1 border-bottom border-white">
-                                        <span>{item.name}</span>
-                                        <span className="fw-bold text-dark">{Math.round(item.weight * currentMultiplier)}g</span>
-                                    </li>
-                                ))}
-                            </>
-                        )}
-                        
-                        {recipe.inclusions && recipe.inclusions.length > 0 && (
-                            <>
-                                <li className="fw-bold text-muted small text-uppercase mt-3 mb-1 border-bottom pb-1">Inclusions / Extras</li>
-                                {recipe.inclusions.map((item) => (
-                                    <li key={item.name} className="d-flex justify-content-between py-1 border-bottom border-white">
-                                        <span>{item.name}</span>
-                                        <span className="fw-bold text-dark">{Math.round(item.weight * currentMultiplier)}g</span>
-                                    </li>
-                                ))}
-                            </>
-                        )}
-                    </ul>
+                {/* Base Dough List */}
+                <h3 className="h6 fw-bold mt-4 mb-2 text-dark">Base Dough</h3>
+                <ul className="list-unstyled mb-4">
+                    {sortDough(recipe.dough).map((item, idx) => (
+                        <li key={idx} className="d-flex justify-content-between py-2 border-bottom text-muted">
+                            <span className="fw-medium">{item.name}</span>
+                            <span className="fw-bold text-dark">{item.weight > 0 ? (item.weight * currentMultiplier).toFixed(1) + ' g' : '-'}</span>
+                        </li>
+                    ))}
+                </ul>
 
-                    {/* Total Yield */}
-                    <div className="d-flex justify-content-between mt-3 pt-2 border-top border-dark fw-bold h6 mb-0">
-                        <span>Yield:</span>
-                        <span className="text-primary">{totalYield}g</span>
-                    </div>
+                {/* Inclusions List (if they exist) */}
+                {recipe.inclusions && recipe.inclusions.length > 0 && (
+                    <>
+                        <h3 className="h6 fw-bold mt-3 mb-2 text-dark">Inclusions</h3>
+                        <ul className="list-unstyled mb-3">
+                            {recipe.inclusions.map((item, idx) => (
+                                <li key={idx} className="d-flex justify-content-between py-2 border-bottom text-muted">
+                                    <span className="fw-medium">{item.name}</span>
+                                    <span className="fw-bold text-dark">{item.weight > 0 ? (item.weight * currentMultiplier).toFixed(1) + ' g' : '-'}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </>
+                )}
+
+                {/* Final Yield Output */}
+                <div className="mt-4 p-3 bg-light rounded text-end shadow-sm">
+                    <span className="fw-bold text-secondary">Total Yield: </span>
+                    <span className="fw-bold text-success" style={{ fontSize: '1.2rem' }}>{totalYield} g</span>
                 </div>
-
-            </div>
-        </div>
-    );
-}
-
-// Main Calculator Layout
-export default function Calculator() {
-    return (
-        <div className="container-fluid px-xl-5 px-3 pb-5 text-center">            
-            <div className="column">
-                
-                
-
-                <div className="bg-white p-3 rounded-4 shadow-sm mb-4 border border-dark text-dark mt-3">
-                    <h1 className="h3 fw-bold mb-0">🍞 DHG Baker's Calculator 🍞</h1>
-                    <p className="mb-0 small text-muted">Scale and target dough weights perfectly</p>
-                </div>
-
-                {/* The 6 Mix Cards in a 3x2 Grid */}
-                <div className="row g-4">
-                    <div className="col-lg-4 col-md-6 col-12">
-                        <MixCard mixName="Mix 1" defaultRecipe="og_loaf" />
-                    </div>
-                    <div className="col-lg-4 col-md-6 col-12">
-                        <MixCard mixName="Mix 2" defaultRecipe="roasted_chile" />
-                    </div>
-                    <div className="col-lg-4 col-md-6 col-12">
-                        <MixCard mixName="Mix 3" defaultRecipe="english_muffs" />
-                    </div>
-                    <div className="col-lg-4 col-md-6 col-12">
-                        <MixCard mixName="Mix 4" defaultRecipe="focaccia" />
-                    </div>
-                    <div className="col-lg-4 col-md-6 col-12">
-                        <MixCard mixName="Mix 5" defaultRecipe="blueberry" />
-                    </div>
-                    <div className="col-lg-4 col-md-6 col-12">
-                        <MixCard mixName="Mix 6" defaultRecipe="og_bagels" />
-                    </div>
-                </div>
-
-                <Footer />
             </div>
         </div>
     );
