@@ -7,6 +7,8 @@ export default function App() {
   return (
     <div className="app-container container my-4">
       
+      {/* Header Added Here */}
+      <Header />
       
       {/* Starter Calculator Section */}
       <div className="text-center my-5">
