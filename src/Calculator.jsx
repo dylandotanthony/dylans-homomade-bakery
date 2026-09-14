@@ -7,7 +7,7 @@ export default function App() {
   return (
 <div className="app-container container-fluid my-4" style={{ maxWidth: '1600px' }}>      
       {/* Header Added Here */}
-      <Header />
+    
       
       {/* Starter Calculator Section */}
       <div className="text-center my-5">
@@ -52,7 +52,7 @@ export default function App() {
         </div>
       </div>
       
-      <Footer />
+    
     </div>
   );
 }
