@@ -6,21 +6,48 @@ import SourdoughStarterCalculator from './SourdoughStarterCalculator';
 export default function App() {
   return (
     <div className="app-container container my-4">
-      <Header />
       
+      
+      {/* Starter Calculator Section */}
       <div className="text-center my-5">
         <h1 className="mb-4">Starter Calculator</h1>
-        {/* The calculator is rendered right here */}
         <SourdoughStarterCalculator />
       </div>
 
       <hr className="my-5" />
       
-      {/* Example of rendering your MixCards below the calculator */}
+      {/* Recipe Calculator 3x3 Grid Section */}
       <h2 className="text-center mb-4">Recipe Calculator</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-8 col-lg-6">
-          <MixCard mixName="Main Dough Batch" defaultRecipe="og_loaf" />
+      
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+        <div className="col">
+          <MixCard mixName="Mix 1" defaultRecipe="og_loaf" />
+        </div>
+        <div className="col">
+          <MixCard mixName="Mix 2" defaultRecipe="roasted_chile" />
+        </div>
+        <div className="col">
+          <MixCard mixName="Mix 3" defaultRecipe="jala_ched" />
+        </div>
+        
+        <div className="col">
+          <MixCard mixName="Mix 4" defaultRecipe="cin_raisin" />
+        </div>
+        <div className="col">
+          <MixCard mixName="Mix 5" defaultRecipe="focaccia" />
+        </div>
+        <div className="col">
+          <MixCard mixName="Mix 6" defaultRecipe="og_bagels" />
+        </div>
+        
+        <div className="col">
+          <MixCard mixName="Mix 7" defaultRecipe="english_muffs" />
+        </div>
+        <div className="col">
+          <MixCard mixName="Mix 8" defaultRecipe="tortilla" />
+        </div>
+        <div className="col">
+          <MixCard mixName="Mix 9" defaultRecipe="pumpkin" />
         </div>
       </div>
       
@@ -340,8 +367,8 @@ function MixCard({ mixName, defaultRecipe }) {
     const selectId = `recipe-select-${mixName.replace(/\s+/g, '-').toLowerCase()}`;
 
     return (
-        <div className="card shadow-sm border-0 mb-4 p-3" style={{ borderRadius: '12px', backgroundColor: '#fff', border: '1px solid #eaeaea' }}>
-            <div className="card-body text-start">
+        <div className="card shadow-sm border-0 h-100 p-3" style={{ borderRadius: '12px', backgroundColor: '#fff', border: '1px solid #eaeaea' }}>
+            <div className="card-body text-start d-flex flex-column">
                 <h2 className="h5 fw-bold text-muted mb-3 text-uppercase">{mixName}</h2>
 
                 {/* Recipe Selection - ALPHABETIZED & ACCESSIBLE */}
@@ -375,7 +402,7 @@ function MixCard({ mixName, defaultRecipe }) {
 
                 {/* Base Dough List */}
                 <h3 className="h6 fw-bold mt-4 mb-2 text-dark">Base Dough</h3>
-                <ul className="list-unstyled mb-4">
+                <ul className="list-unstyled mb-4 flex-grow-1">
                     {sortDough(recipe.dough).map((item, idx) => (
                         <li key={idx} className="d-flex justify-content-between py-2 border-bottom text-muted">
                             <span className="fw-medium">{item.name}</span>
@@ -400,9 +427,11 @@ function MixCard({ mixName, defaultRecipe }) {
                 )}
 
                 {/* Final Yield Output */}
-                <div className="mt-4 p-3 bg-light rounded text-end shadow-sm">
-                    <span className="fw-bold text-secondary">Total Yield: </span>
-                    <span className="fw-bold text-success" style={{ fontSize: '1.2rem' }}>{totalYield} g</span>
+                <div className="mt-auto pt-3">
+                    <div className="p-3 bg-light rounded text-end shadow-sm">
+                        <span className="fw-bold text-secondary">Total Yield: </span>
+                        <span className="fw-bold text-success" style={{ fontSize: '1.2rem' }}>{totalYield} g</span>
+                    </div>
                 </div>
             </div>
         </div>
