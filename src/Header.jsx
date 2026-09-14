@@ -12,10 +12,7 @@ export default function Header() {
   return (
     <>
       {/* Banner Section */}
-      <div 
-        className="banner-container shadow-sm border border-dark mx-auto position-relative" 
-        style={{ overflow: 'hidden' }}
-      >
+      <div className="banner-container shadow-sm border border-dark mx-auto position-relative">
         <img 
           className="ddhg w-100" 
           src={ddhg} 
@@ -30,8 +27,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Social Media Links */}
-      <div className="d-flex justify-content-center flex-wrap gap-3 mb-4 mt-5">
+      {/* Social Media Links - Increased top margin (mt-5) to account for the overlapping pill */}
+      <div className="d-flex justify-content-center flex-wrap gap-3 mb-4 mt-5 pt-3">
         <a href="https://www.facebook.com/DylansHomoMadeGoods" className="social-circle bg-facebook shadow-sm" target="_blank" rel="noopener noreferrer">
           <img src={facebookIcon} alt="Facebook" />
         </a>
