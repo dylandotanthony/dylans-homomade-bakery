@@ -5,7 +5,7 @@ import Footer from './Footer';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // Import required images directly from src/assets/
-import logoImg from './assets/dlogo.png';
+import ddhg from './assets/ddhg.png';
 import facebookLogoSvg from './assets/Facebook-f_Logo.svg';
 import smsIcon from './assets/generic-sms.svg';
 import emailIcon from './assets/generic-email.svg';
@@ -17,7 +17,6 @@ import amazonIcon from './assets/amazon.svg';
 export default function Home() {
   return (
     <div className="container pb-5 text-center">
-      {/* Replaced custom 'column' with standard Bootstrap 'd-flex flex-column' */}
       <div className="d-flex flex-column">
         
         {/* Banner Section */}
@@ -33,12 +32,12 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Main Content Rows */}
-        <div className="row g-4 text-start">
+        {/* Main Content Rows - Updated for Desktop Responsiveness */}
+        <div className="row g-4 text-start justify-content-center">
           
           {/* Card 1: Shop & Info */}
-          <div className="col-12">
-            <div className="card shadow-sm border-0">
+          <div className="col-12 col-lg-8">
+            <div className="card shadow-sm border-0 h-100">
               <div className="card-body text-center d-flex flex-column justify-content-center pb-3">
                 <h3 className="card-title h4 mb-3 mt-2 font-weight-bold">🍞 Fresh HomoMade Sourdough 🥖</h3>
                 <p className="mb-4 text-muted">Order your loaves, bagels, english muffs, and specialty focaccia directly from our shop!</p>
@@ -51,9 +50,9 @@ export default function Home() {
                     target="_blank" 
                     rel="noopener noreferrer"
                 >
-                  <img className="icon-logo me-2" aria-hidden="true" src={logoImg} alt="Logo" />
+                  <img className="icon-logo me-2" aria-hidden="true" src={ddhg} alt="Logo" style={{ height: '24px' }} />
                   Order Here, Get Crusty
-                  <img className="icon-logo ms-2" aria-hidden="true" src={logoImg} alt="Logo" />
+                  <img className="icon-logo ms-2" aria-hidden="true" src={ddhg} alt="Logo" style={{ height: '24px' }} />
                 </a>
 
                 <Link className="btn btn-outline-info mt-2" to="/nutrition">Nutritional Information</Link>
@@ -87,14 +86,14 @@ export default function Home() {
           </div>
 
           {/* Card 2: Schedule */}
-          <div className="col-12">
-            <div className="card shadow-sm border-0">
-              <div className="card-body text-center">
+          <div className="col-12 col-lg-6">
+            <div className="card shadow-sm border-0 h-100">
+              <div className="card-body text-center d-flex flex-column">
                 <h3 className="card-title h5 mb-3 font-weight-bold">🍞📅 Sourdough Schedule 📅🥖</h3>
                 <iframe 
                   title="Sourdough Baking Schedule"
                   src="https://calendar.google.com/calendar/embed?src=fa6f05beb1b59977c7330102413a07ac92ddea53dae7249e82ed1dfbd6bd161e%40group.calendar.google.com&ctz=America%2FDenver&mode=AGENDA" 
-                  style={{ border: 0, width: '100%', height: '400px', borderRadius: '8px' }} 
+                  style={{ border: 0, width: '100%', flexGrow: 1, minHeight: '400px', borderRadius: '8px' }} 
                   scrolling="no"
                   loading="lazy"
                 ></iframe>
@@ -102,22 +101,22 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Card 3: Facebook Feed */}
-          <div className="col-12">
-            <div className="card shadow-sm border-0">
-              <div className="card-body text-center">
+          {/* Card 3: Facebook Feed - FIXED FOR MOBILE */}
+          <div className="col-12 col-lg-6">
+            <div className="card shadow-sm border-0 h-100">
+              <div className="card-body text-center d-flex flex-column">
                 <h3 className="card-title h5 mb-3 font-weight-bold d-flex align-items-center justify-content-center">
                   <img src={facebookLogoSvg} alt="Facebook Logo" style={{ width: '20px', height: '20px' }} className="me-2" />
                   The Latest on DHG
                   <img src={facebookLogoSvg} alt="Facebook Logo" style={{ width: '20px', height: '20px' }} className="ms-2" />
                 </h3>
-                <div className="d-flex justify-content-center w-100">
+                <div className="d-flex justify-content-center w-100 flex-grow-1">
                   <iframe 
                     title="Dylan's HomoMade Goods Facebook Feed"
                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDylansHomoMadeGoods&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-                    width="500" 
+                    width="100%" 
                     height="500" 
-                    style={{ border: 'none', overflow: 'hidden', display: 'block' }} 
+                    style={{ border: 'none', overflow: 'hidden', display: 'block', maxWidth: '500px' }} 
                     scrolling="no" 
                     allowFullScreen={true} 
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
@@ -129,15 +128,15 @@ export default function Home() {
           </div>
 
           {/* Card 4: Contact */}
-          <div className="col-12">
-            <div className="card shadow-sm border-0">
-              <div className="card-body text-center">
+          <div className="col-12 col-lg-6">
+            <div className="card shadow-sm border-0 h-100">
+              <div className="card-body text-center d-flex flex-column justify-content-center">
                 <h3 className="card-title h5 mb-3 font-weight-bold">📧 Get in Touch 📱</h3>
                 <div className="row g-2 mb-2">
-                  <div className="col-6"><a className="btn btn-outline-info m-0" href="sms:+13035917472" target="_blank" rel="noopener noreferrer"><img className="icon" aria-hidden="true" src={smsIcon} alt="Text Icon" />Text us</a></div>
-                  <div className="col-6"><a className="btn btn-outline-info m-0" href="mailto:hello@dylanshomomadegoods.com" target="_blank" rel="noopener noreferrer"><img className="icon" aria-hidden="true" src={emailIcon} alt="Email Icon" />Email Us</a></div>
+                  <div className="col-6"><a className="btn btn-outline-info m-0 w-100" href="sms:+13035917472" target="_blank" rel="noopener noreferrer"><img className="icon me-1" aria-hidden="true" src={smsIcon} alt="Text Icon" style={{width: '16px'}} />Text us</a></div>
+                  <div className="col-6"><a className="btn btn-outline-info m-0 w-100" href="mailto:hello@dylanshomomadegoods.com" target="_blank" rel="noopener noreferrer"><img className="icon me-1" aria-hidden="true" src={emailIcon} alt="Email Icon" style={{width: '16px'}} />Email Us</a></div>
                 </div>
-                <a className="button button-whatsapp" href="https://wa.me/13035917472" target="_blank" rel="noopener noreferrer" role="button">
+                <a className="button button-whatsapp w-100 mt-2" href="https://wa.me/13035917472" target="_blank" rel="noopener noreferrer" role="button">
                   <i className="bi bi-whatsapp me-2"></i>WhatsApp
                 </a>
               </div>
@@ -145,21 +144,21 @@ export default function Home() {
           </div>
 
           {/* Card 5: Support / Donations */}
-          <div className="col-12">
-            <div className="card shadow-sm border-0">
+          <div className="col-12 col-lg-6">
+            <div className="card shadow-sm border-0 h-100">
               <div className="card-body text-center pb-3">
                 <h3 className="card-title h5 mb-3 mt-2 font-weight-bold">🎁 Support the Bakery 💸 </h3>
                 <div className="row align-items-center mb-3">
                   <div className="col-6">
                     <img src={venmoQr} alt="Venmo QR Code" className="img-fluid border border-dark rounded-3" loading="lazy" />
                   </div>
-                  <div className="col-6">
-                    <a className="button button-venmo m-0 mb-2" href="https://venmo.com/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon" aria-hidden="true" src={venmoIcon} alt="Venmo Logo" />Venmo</a>
-                    <a className="button button-paypal m-0" href="https://www.paypal.me/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon" aria-hidden="true" src={paypalIcon} alt="PayPal Logo" />PayPal</a>
+                  <div className="col-6 d-flex flex-column gap-2">
+                    <a className="button button-venmo m-0" href="https://venmo.com/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon me-1" aria-hidden="true" src={venmoIcon} alt="Venmo Logo" style={{width: '16px'}} />Venmo</a>
+                    <a className="button button-paypal m-0" href="https://www.paypal.me/dylanshomomadegoods" target="_blank" rel="noopener noreferrer" role="button"><img className="icon me-1" aria-hidden="true" src={paypalIcon} alt="PayPal Logo" style={{width: '16px'}} />PayPal</a>
                   </div>
                 </div>
-                <a className="button button-amazon m-0" href="https://www.amazon.com/registries/gl/guest-view/1H8P7FQ2QP6O5?ref_=cm_sw_r_cp_ud_ggr-subnav-share_67DF586JW5W3XPYQJHNV" target="_blank" rel="noopener noreferrer" role="button">
-                  <img className="icon" aria-hidden="true" src={amazonIcon} alt="Amazon Wishlist Logo" />Crusty Dreams Wishlist
+                <a className="button button-amazon m-0 w-100 d-block" href="https://www.amazon.com/registries/gl/guest-view/1H8P7FQ2QP6O5?ref_=cm_sw_r_cp_ud_ggr-subnav-share_67DF586JW5W3XPYQJHNV" target="_blank" rel="noopener noreferrer" role="button">
+                  <img className="icon me-2" aria-hidden="true" src={amazonIcon} alt="Amazon Wishlist Logo" style={{width: '16px'}} />Crusty Dreams Wishlist
                 </a>
               </div>
             </div>
