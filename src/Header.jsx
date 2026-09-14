@@ -13,7 +13,7 @@ export default function Header() {
     <>
       {/* Banner Section - Removed inline styles so it relies on your index.css perfectly */}
       <div className="banner-container shadow-sm border border-dark mx-auto">
-        <img className="banner-img" src={bannerImg} alt="Dylan's HomoMade Goods Banner" />
+        <img className="ddhg" src={bannerImg} alt="Dylan's HomoMade Goods Banner" />
         <div className="position-absolute start-50 translate-middle-x w-100 px-3" style={{ bottom: '-40px' }}>
           <h1 className="responsive-title bg-white px-4 py-2 rounded-pill shadow-sm border border-dark m-0">
             Dylan's HomoMade Goods
