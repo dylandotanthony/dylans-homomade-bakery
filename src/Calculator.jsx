@@ -5,8 +5,7 @@ import SourdoughStarterCalculator from './SourdoughStarterCalculator';
 
 export default function App() {
   return (
-    <div className="app-container container my-4">
-      
+<div className="app-container container-fluid my-4" style={{ maxWidth: '1600px' }}>      
       {/* Header Added Here */}
       <Header />
       
