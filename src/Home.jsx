@@ -6,6 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // Import all images directly from src/assets/
 import bannerImg from './assets/banner.png';
+import ddhg from './assets/ddhg.png';
 import logoImg from './assets/dlogo.png';
 import facebookIcon from './assets/facebook.svg';
 import instagramIcon from './assets/instagram.svg';
