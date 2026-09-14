@@ -4,15 +4,8 @@ import Header from './Header';
 import Footer from './Footer'; 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-// Import all images directly from src/assets/
-import bannerImg from './assets/banner.png';
-import ddhg from './assets/ddhg.png';
+// Import required images directly from src/assets/
 import logoImg from './assets/dlogo.png';
-import facebookIcon from './assets/facebook.svg';
-import instagramIcon from './assets/instagram.svg';
-import tiktokIcon from './assets/tiktok.svg';
-import linkedinIcon from './assets/linkedin.svg';
-import nextdoorIcon from './assets/nextdoor.svg';
 import facebookLogoSvg from './assets/Facebook-f_Logo.svg';
 import smsIcon from './assets/generic-sms.svg';
 import emailIcon from './assets/generic-email.svg';
@@ -24,7 +17,8 @@ import amazonIcon from './assets/amazon.svg';
 export default function Home() {
   return (
     <div className="container pb-5 text-center">
-      <div className="column">
+      {/* Replaced custom 'column' with standard Bootstrap 'd-flex flex-column' */}
+      <div className="d-flex flex-column">
         
         {/* Banner Section */}
         <Header />
