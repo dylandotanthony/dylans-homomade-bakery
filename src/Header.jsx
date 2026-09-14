@@ -11,9 +11,18 @@ import nextdoorIcon from './assets/nextdoor.svg';
 export default function Header() {
   return (
     <>
-      {/* Banner Section - Removed inline styles so it relies on your index.css perfectly */}
-      <div className="banner-container shadow-sm border border-dark mx-auto">
-        <img className="ddhg" src={ddhg} alt="Dylan's HomoMade Goods Banner" />
+      {/* Banner Section */}
+      <div 
+        className="banner-container shadow-sm border border-dark mx-auto position-relative" 
+        style={{ overflow: 'hidden' }}
+      >
+        <img 
+          className="ddhg w-100" 
+          src={ddhg} 
+          alt="Dylan's HomoMade Goods Banner" 
+          style={{ objectFit: 'cover', maxHeight: '350px' }} 
+        />
+        
         <div className="position-absolute start-50 translate-middle-x w-100 px-3" style={{ bottom: '-40px' }}>
           <h1 className="responsive-title bg-white px-4 py-2 rounded-pill shadow-sm border border-dark m-0">
             Dylan's HomoMade Goods
