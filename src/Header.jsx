@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import the images needed for the Header
-import bannerImg from './assets/banner.png';
+import ddhg from './assets/ddhg.png';
 import facebookIcon from './assets/facebook.svg';
 import instagramIcon from './assets/instagram.svg';
 import tiktokIcon from './assets/tiktok.svg';
