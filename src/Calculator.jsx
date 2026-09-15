@@ -5,7 +5,7 @@ import SourdoughStarterCalculator from './SourdoughStarterCalculator';
 
 export default function App() {
   return (
-<div className="app-container container-fluid my-4" style={{ maxWidth: '1600px' }}>      
+    <div className="app-container container-fluid my-4" style={{ maxWidth: '1600px' }}>      
       {/* Header Added Here */}
     
       
@@ -407,7 +407,7 @@ function MixCard({ mixName, defaultRecipe }) {
                     {sortDough(recipe.dough).map((item, idx) => (
                         <li key={idx} className="d-flex justify-content-between py-2 border-bottom text-muted">
                             <span className="fw-medium">{item.name}</span>
-                            <span className="fw-bold text-dark">{item.weight > 0 ? (item.weight * currentMultiplier).toFixed(1) + ' g' : '-'}</span>
+                            <span className="fw-bold text-dark">{item.weight > 0 ? Math.round(item.weight * currentMultiplier) + ' g' : '-'}</span>
                         </li>
                     ))}
                 </ul>
@@ -420,7 +420,7 @@ function MixCard({ mixName, defaultRecipe }) {
                             {recipe.inclusions.map((item, idx) => (
                                 <li key={idx} className="d-flex justify-content-between py-2 border-bottom text-muted">
                                     <span className="fw-medium">{item.name}</span>
-                                    <span className="fw-bold text-dark">{item.weight > 0 ? (item.weight * currentMultiplier).toFixed(1) + ' g' : '-'}</span>
+                                    <span className="fw-bold text-dark">{item.weight > 0 ? Math.round(item.weight * currentMultiplier) + ' g' : '-'}</span>
                                 </li>
                             ))}
                         </ul>
