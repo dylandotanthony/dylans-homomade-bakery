@@ -211,8 +211,8 @@ const recipes = {
     },
     "JC_E_muffs": {
         name: "Jala Ched Sourdough English Muffs",
-        dough: [{ name: "Flour", weight: 49.8 }, { name: "Milk", weight: 28.8 }, { name: "Starter", weight: 13.1 }, { name: "Salt", weight: 1 }, { name: "Blue Agave", weight: 2.6 }],
-        inclusions: [{ name: "Cheddar Cheese", weight: 9.8 }, { name: "Jalapenos", weight: 9.8 }, { name: "Cornmeal Dusting", weight: 0 }]
+        dough: [{ name: "Flour", weight: 49.8 }, { name: "Milk", weight: 28.8 }, { name: "Starter", weight: 13.1 }, { name: "Salt", weight: 1 }, { name: "Blue Agave", weight: 2.6 },{ name: "Cheddar Cheese", weight: 9.8 }, { name: "Jalapenos", weight: 9.8 } ],
+        inclusions: [ { name: "Cornmeal Dusting", weight: 0 }]
     },
     "BB_E_muffs": {
         name: "Blueberry Sourdough English Muffs",
@@ -278,6 +278,11 @@ const recipes = {
         name: "Blueberry Bagels",
         dough: [{ name: "Flour", weight: 68.7 }, { name: "Water", weight: 28.1 }, { name: "Starter", weight: 20.5 }, { name: "Blue Agave", weight: 4 }, { name: "Brown Sugar", weight: 4 }, { name: "Salt", weight: 2.1 }],
         inclusions: [{ name: "Dried Blueberry", weight: 7.4 }]
+    },
+  "COB_PEACH": {
+        name: "Cobbled Peach",
+        dough: [{ name: "Flour", weight: 426.7 }, { name: "Water", weight: 136.5 }, { name: "Peach Juice", weight: 128 }, { name: "Starter", weight: 102.4 }, { name: "Cardamom", weight: 1 }, { name: "Almond Extract", weight: 4.3 }, { name: "Salt", weight: 13.7 }],
+        inclusions: [{ name: "Peaches", weight: 38.4 }]
     },
     "blueberry_jack": {
         name: "Blueberry Jack Sourdough",
