@@ -173,7 +173,7 @@ export default function SourdoughStarterCalculator() {
 
             <div style={styles.fieldGroup}>
               <label style={styles.label}>
-                Target Butter Amount (grams)
+                Butter Amount (grams)
                 <input
                   type="number"
                   min="0"
@@ -264,9 +264,9 @@ const styles = {
     color: '#64748b',
     transition: 'all 0.2s',
   },
-  activeTab: {
-    background: '#e07a5f',
-    borderColor: '#e07a5f',
+ activeTab: {
+    background: '#0066FF',  // <-- Your electric blue!
+    borderColor: '#0066FF', 
     color: '#ffffff',
   },
   subTabBtn: {
@@ -282,8 +282,8 @@ const styles = {
     transition: 'all 0.2s',
   },
   activeSubTab: {
-    background: '#475569',
-    borderColor: '#475569',
+    background: '#0052CC',  // <-- A slightly deeper electric blue for the smaller sub-tabs
+    borderColor: '#0052CC',
     color: '#ffffff',
   },
   fieldGroup: {
