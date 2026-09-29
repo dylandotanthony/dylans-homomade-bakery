@@ -1,4 +1,3 @@
-// SourdoughStarterCalculator.jsx
 import React, { useState } from 'react';
 
 const TIME_PRESETS = [
@@ -11,18 +10,21 @@ const TIME_PRESETS = [
 ];
 
 export default function SourdoughStarterCalculator() {
+  // --- Main Tab State ---
+  const [mainTab, setMainTab] = useState('starter'); // 'starter' or 'butter'
+
+  // --- Starter Calculator State ---
   const [calcMode, setCalcMode] = useState('custom'); // 'custom' or 'time'
   const [totalGrams, setTotalGrams] = useState(150);
-  
-  // Custom ratio inputs: Starter : Flour : Water
   const [starterRatio, setStarterRatio] = useState(1);
   const [flourRatio, setFlourRatio] = useState(5);
   const [waterRatio, setWaterRatio] = useState(5);
-
-  // Time preset index
   const [selectedTimeIdx, setSelectedTimeIdx] = useState(4); // default 12-14 hrs (1:5:5)
 
-  // Determine active ratio values
+  // --- Cinnamon Butter State ---
+  const [butterAmount, setButterAmount] = useState(39);
+
+  // === Starter Math ===
   const activeRatio = calcMode === 'custom' 
     ? [Number(starterRatio) || 0, Number(flourRatio) || 0, Number(waterRatio) || 0]
     : TIME_PRESETS[selectedTimeIdx].ratio;
@@ -30,129 +32,192 @@ export default function SourdoughStarterCalculator() {
   const [sPart, fPart, wPart] = activeRatio;
   const totalParts = sPart + fPart + wPart;
 
-  // Calculate weights rounded to 1 decimal point (or integer)
   const starterWeight = totalParts > 0 ? ((totalGrams * sPart) / totalParts).toFixed(1) : 0;
   const flourWeight = totalParts > 0 ? ((totalGrams * fPart) / totalParts).toFixed(1) : 0;
   const waterWeight = totalParts > 0 ? ((totalGrams * wPart) / totalParts).toFixed(1) : 0;
 
+  // === Cinnamon Butter Math ===
+  const currentButter = parseFloat(butterAmount) || 0;
+  const butterMultiplier = currentButter / 39;
+  const cbBrownSugar = Math.round(45 * butterMultiplier);
+  const cbFlour = Math.round(11 * butterMultiplier);
+  const cbCinnamon = Math.round(5 * butterMultiplier);
+  const cbTotalYield = Math.round(currentButter + cbBrownSugar + cbFlour + cbCinnamon);
+
   return (
     <section style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Starter Feeding Calculator</h2>
         
-        {/* Mode Switcher */}
+        {/* Main Header Tabs */}
         <div style={styles.tabs}>
           <button
             type="button"
-            onClick={() => setCalcMode('custom')}
-            style={{ ...styles.tabBtn, ...(calcMode === 'custom' ? styles.activeTab : {}) }}
+            onClick={() => setMainTab('starter')}
+            style={{ ...styles.tabBtn, ...(mainTab === 'starter' ? styles.activeTab : {}) }}
           >
-            Custom Ratio
+            Starter
           </button>
           <button
             type="button"
-            onClick={() => setCalcMode('time')}
-            style={{ ...styles.tabBtn, ...(calcMode === 'time' ? styles.activeTab : {}) }}
+            onClick={() => setMainTab('butter')}
+            style={{ ...styles.tabBtn, ...(mainTab === 'butter' ? styles.activeTab : {}) }}
           >
-            By Target Time
+            Cinnamon Butter
           </button>
         </div>
 
-        {/* Total Grams Needed */}
-        <div style={styles.fieldGroup}>
-          <label style={styles.label}>
-            Total Starter Needed (grams)
-            <input
-              type="number"
-              min="1"
-              value={totalGrams}
-              onChange={(e) => setTotalGrams(Math.max(0, Number(e.target.value)))}
-              style={styles.input}
-            />
-          </label>
-        </div>
+        {/* --- STARTER CALCULATOR VIEW --- */}
+        {mainTab === 'starter' && (
+          <>
+            <h2 style={styles.title}>Starter Feeding Calculator</h2>
+            
+            {/* Mode Switcher */}
+            <div style={styles.tabs}>
+              <button
+                type="button"
+                onClick={() => setCalcMode('custom')}
+                style={{ ...styles.subTabBtn, ...(calcMode === 'custom' ? styles.activeSubTab : {}) }}
+              >
+                Custom Ratio
+              </button>
+              <button
+                type="button"
+                onClick={() => setCalcMode('time')}
+                style={{ ...styles.subTabBtn, ...(calcMode === 'time' ? styles.activeSubTab : {}) }}
+              >
+                By Target Time
+              </button>
+            </div>
 
-        {/* Mode-specific Inputs */}
-        {calcMode === 'custom' ? (
-          <div style={styles.fieldGroup}>
-            <span style={styles.label}>Feeding Ratio (Starter : Flour : Water)</span>
-            <div style={styles.ratioRow}>
-              <div style={styles.ratioItem}>
-                <span style={styles.subLabel}>Starter</span>
+            {/* Total Grams Needed */}
+            <div style={styles.fieldGroup}>
+              <label style={styles.label}>
+                Total Starter Needed (grams)
                 <input
                   type="number"
-                  min="0.1"
-                  step="0.5"
-                  value={starterRatio}
-                  onChange={(e) => setStarterRatio(e.target.value)}
+                  min="1"
+                  value={totalGrams}
+                  onChange={(e) => setTotalGrams(Math.max(0, Number(e.target.value)))}
                   style={styles.input}
                 />
+              </label>
+            </div>
+
+            {/* Mode-specific Inputs */}
+            {calcMode === 'custom' ? (
+              <div style={styles.fieldGroup}>
+                <span style={styles.label}>Feeding Ratio (Starter : Flour : Water)</span>
+                <div style={styles.ratioRow}>
+                  <div style={styles.ratioItem}>
+                    <span style={styles.subLabel}>Starter</span>
+                    <input type="number" min="0.1" step="0.5" value={starterRatio} onChange={(e) => setStarterRatio(e.target.value)} style={styles.input} />
+                  </div>
+                  <span style={styles.colon}>:</span>
+                  <div style={styles.ratioItem}>
+                    <span style={styles.subLabel}>Flour</span>
+                    <input type="number" min="0.1" step="0.5" value={flourRatio} onChange={(e) => setFlourRatio(e.target.value)} style={styles.input} />
+                  </div>
+                  <span style={styles.colon}>:</span>
+                  <div style={styles.ratioItem}>
+                    <span style={styles.subLabel}>Water</span>
+                    <input type="number" min="0.1" step="0.5" value={waterRatio} onChange={(e) => setWaterRatio(e.target.value)} style={styles.input} />
+                  </div>
+                </div>
               </div>
-              <span style={styles.colon}>:</span>
-              <div style={styles.ratioItem}>
-                <span style={styles.subLabel}>Flour</span>
-                <input
-                  type="number"
-                  min="0.1"
-                  step="0.5"
-                  value={flourRatio}
-                  onChange={(e) => setFlourRatio(e.target.value)}
-                  style={styles.input}
-                />
+            ) : (
+              <div style={styles.fieldGroup}>
+                <label style={styles.label}>
+                  Desired Peak Time (at ~75°F / 24°C)
+                  <select
+                    value={selectedTimeIdx}
+                    onChange={(e) => setSelectedTimeIdx(Number(e.target.value))}
+                    style={styles.select}
+                  >
+                    {TIME_PRESETS.map((preset, idx) => (
+                      <option key={idx} value={idx}>
+                        {preset.label} (Ratio 1:{preset.ratio[1]}:{preset.ratio[2]})
+                      </option>
+                    ))}
+                  </select>
+                </label>
               </div>
-              <span style={styles.colon}>:</span>
-              <div style={styles.ratioItem}>
-                <span style={styles.subLabel}>Water</span>
-                <input
-                  type="number"
-                  min="0.1"
-                  step="0.5"
-                  value={waterRatio}
-                  onChange={(e) => setWaterRatio(e.target.value)}
-                  style={styles.input}
-                />
+            )}
+
+            {/* Output Results */}
+            <div style={styles.resultsBox}>
+              <h3 style={styles.resultsHeading}>Ingredients to mix:</h3>
+              <div style={styles.resultItem}>
+                <span>Active Starter:</span>
+                <strong>{starterWeight} g</strong>
+              </div>
+              <div style={styles.resultItem}>
+                <span>Flour:</span>
+                <strong>{flourWeight} g</strong>
+              </div>
+              <div style={styles.resultItem}>
+                <span>Water:</span>
+                <strong>{waterWeight} g</strong>
               </div>
             </div>
-          </div>
-        ) : (
-          <div style={styles.fieldGroup}>
-            <label style={styles.label}>
-              Desired Peak Time (at ~75°F / 24°C)
-              <select
-                value={selectedTimeIdx}
-                onChange={(e) => setSelectedTimeIdx(Number(e.target.value))}
-                style={styles.select}
-              >
-                {TIME_PRESETS.map((preset, idx) => (
-                  <option key={idx} value={idx}>
-                    {preset.label} (Ratio 1:{preset.ratio[1]}:{preset.ratio[2]})
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+
+            <p style={styles.footnote}>
+              Calculated for standard room temperature (~75°F / 24°C). Warmer ambient temperatures cause starters to peak faster; cooler rooms slow fermentation down.
+            </p>
+          </>
         )}
 
-        {/* Output Results */}
-        <div style={styles.resultsBox}>
-          <h3 style={styles.resultsHeading}>Ingredients to mix:</h3>
-          <div style={styles.resultItem}>
-            <span>Active Starter:</span>
-            <strong>{starterWeight} g</strong>
-          </div>
-          <div style={styles.resultItem}>
-            <span>Flour:</span>
-            <strong>{flourWeight} g</strong>
-          </div>
-          <div style={styles.resultItem}>
-            <span>Water:</span>
-            <strong>{waterWeight} g</strong>
-          </div>
-        </div>
+        {/* --- CINNAMON BUTTER CALCULATOR VIEW --- */}
+        {mainTab === 'butter' && (
+          <>
+            <h2 style={styles.title}>Cinnamon Butter Scaler</h2>
 
-        <p style={styles.footnote}>
-          Calculated for standard room temperature (~75°F / 24°C). Warmer ambient temperatures cause starters to peak faster; cooler rooms slow fermentation down.
-        </p>
+            <div style={styles.fieldGroup}>
+              <label style={styles.label}>
+                Target Butter Amount (grams)
+                <input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={butterAmount}
+                  onChange={(e) => setButterAmount(e.target.value === "" ? "" : Math.max(0, Number(e.target.value)))}
+                  style={styles.input}
+                />
+              </label>
+            </div>
+
+            <div style={styles.resultsBox}>
+              <h3 style={styles.resultsHeading}>Scaled Ingredients:</h3>
+              <div style={styles.resultItem}>
+                <span>Butter:</span>
+                <strong>{currentButter > 0 ? Math.round(currentButter) + ' g' : '-'}</strong>
+              </div>
+              <div style={styles.resultItem}>
+                <span>Brown Sugar:</span>
+                <strong>{currentButter > 0 ? cbBrownSugar + ' g' : '-'}</strong>
+              </div>
+              <div style={styles.resultItem}>
+                <span>Flour:</span>
+                <strong>{currentButter > 0 ? cbFlour + ' g' : '-'}</strong>
+              </div>
+              <div style={styles.resultItem}>
+                <span>Cinnamon:</span>
+                <strong>{currentButter > 0 ? cbCinnamon + ' g' : '-'}</strong>
+              </div>
+            </div>
+
+            <div style={{...styles.resultsBox, backgroundColor: '#f0fdf4', borderColor: '#bbf7d0', marginTop: '12px' }}>
+              <div style={{...styles.resultItem, borderBottom: 'none', padding: '0'}}>
+                <span style={{color: '#166534', fontWeight: '600'}}>Total Yield:</span>
+                <strong style={{color: '#166534', fontSize: '18px'}}>{cbTotalYield} g</strong>
+              </div>
+            </div>
+            
+            <p style={styles.footnote}>
+              All measurements are rounded to the nearest whole gram for easy scaling.
+            </p>
+          </>
+        )}
+
       </div>
     </section>
   );
@@ -189,19 +254,36 @@ const styles = {
   },
   tabBtn: {
     flex: 1,
-    padding: '10px 14px',
+    padding: '12px 14px',
     border: '1px solid #e2e8f0',
     background: '#f8fafc',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontWeight: '600',
-    fontSize: '14px',
+    fontWeight: '700',
+    fontSize: '15px',
     color: '#64748b',
     transition: 'all 0.2s',
   },
   activeTab: {
     background: '#e07a5f',
     borderColor: '#e07a5f',
+    color: '#ffffff',
+  },
+  subTabBtn: {
+    flex: 1,
+    padding: '8px 12px',
+    border: '1px solid #e2e8f0',
+    background: '#f8fafc',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontWeight: '600',
+    fontSize: '13px',
+    color: '#64748b',
+    transition: 'all 0.2s',
+  },
+  activeSubTab: {
+    background: '#475569',
+    borderColor: '#475569',
     color: '#ffffff',
   },
   fieldGroup: {
