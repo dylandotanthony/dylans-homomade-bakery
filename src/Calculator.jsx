@@ -6,6 +6,8 @@ export default function App() {
   return (
     <div className="app-container container-fluid my-4" style={{ maxWidth: '1600px' }}>      
       {/* Header Added Here */}
+      <div> <h1>DHG Calculators</h1>
+      </div>
     
       
       {/* Prep Calculators Section (Now includes both via tabs) */}
