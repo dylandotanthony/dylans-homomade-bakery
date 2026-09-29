@@ -24,8 +24,7 @@ export default function CinnamonButterCalculator() {
     const totalYield = Math.round(currentButter + calcBrownSugar + calcFlour + calcCinnamon);
 
     return (
-        <div className="card shadow-sm border-0 mx-auto p-4 my-4" style={{ maxWidth: '600px', borderRadius: '12px', backgroundColor: '#fff', border: '1px solid #eaeaea' }}>
-            <div className="card-body text-start d-flex flex-column">
+<div className="card shadow-sm border-0 h-100 p-4" style={{ borderRadius: '12px', backgroundColor: '#fff', border: '1px solid #eaeaea' }}>            <div className="card-body text-start d-flex flex-column">
                 <h2 className="h4 fw-bold text-dark mb-4 text-center">Cinnamon Butter Scaler</h2>
                 
                 <div className="mb-4">
