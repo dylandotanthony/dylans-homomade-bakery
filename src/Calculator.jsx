@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import SourdoughStarterCalculator from './SourdoughStarterCalculator';
-import CinnamonButterCalculator from './CinnamonButterCalculator'; // <-- Add this import
 
 export default function App() {
   return (
@@ -9,17 +8,9 @@ export default function App() {
       {/* Header Added Here */}
     
       
-      {/* Starter Calculator Section */}
-<div className="my-5">
-        <h2 className="text-center mb-4">Prep Calculators</h2>
-        <div className="row g-4">
-          <div className="col-12 col-md-6">
-            <SourdoughStarterCalculator />
-          </div>
-          <div className="col-12 col-md-6">
-            <CinnamonButterCalculator />
-          </div>
-        </div>
+      {/* Prep Calculators Section (Now includes both via tabs) */}
+      <div className="text-center my-5 mx-auto" style={{ maxWidth: '500px' }}>
+        <SourdoughStarterCalculator />
       </div>
 
       <hr className="my-5" />
