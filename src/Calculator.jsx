@@ -10,17 +10,13 @@ export default function App() {
     
       
       {/* Starter Calculator Section */}
-     <div className="my-5">
-        <h1 className="text-center mb-4">Prep Calculators</h1>
-        
-        <div className="row justify-content-center g-4">
-          {/* Starter Calculator */}
-          <div className="col-12 col-lg-6">
+<div className="my-5">
+        <h2 className="text-center mb-4">Prep Calculators</h2>
+        <div className="row g-4">
+          <div className="col-12 col-md-6">
             <SourdoughStarterCalculator />
           </div>
-          
-          {/* Cinnamon Butter Calculator */}
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-md-6">
             <CinnamonButterCalculator />
           </div>
         </div>
